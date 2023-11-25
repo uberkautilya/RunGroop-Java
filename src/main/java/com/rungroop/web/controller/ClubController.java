@@ -31,7 +31,7 @@ public class ClubController {
         UserEntity user = new UserEntity();
         List<ClubDto> clubs = clubService.findAllClubs();
         String username = SecurityUtil.getSessionUser();
-        if(username != null) {
+        if (username != null) {
             user = userService.findByUsername(username);
             model.addAttribute("user", user);
         }
@@ -45,7 +45,7 @@ public class ClubController {
         UserEntity user = new UserEntity();
         ClubDto clubDto = clubService.findClubById(clubId);
         String username = SecurityUtil.getSessionUser();
-        if(username != null) {
+        if (username != null) {
             user = userService.findByUsername(username);
             model.addAttribute("user", user);
         }
@@ -62,7 +62,7 @@ public class ClubController {
     }
 
     @GetMapping("/clubs/{clubId}/delete")
-    public String deleteClub(@PathVariable("clubId")Long clubId) {
+    public String deleteClub(@PathVariable("clubId") Long clubId) {
         clubService.delete(clubId);
         return "redirect:/clubs";
     }
@@ -76,7 +76,7 @@ public class ClubController {
 
     @PostMapping("/clubs/new")
     public String saveClub(@Valid @ModelAttribute("club") ClubDto clubDto, BindingResult result, Model model) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             model.addAttribute("club", clubDto);
             return "clubs-create";
         }
@@ -90,11 +90,12 @@ public class ClubController {
         model.addAttribute("club", club);
         return "clubs-edit";
     }
+
     @PostMapping("/clubs/{clubId}/edit")
     public String updateClub(@PathVariable("clubId") Long clubId,
                              @Valid @ModelAttribute("club") ClubDto club,
                              BindingResult result, Model model) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             model.addAttribute("club", club);
             return "clubs-edit";
         }

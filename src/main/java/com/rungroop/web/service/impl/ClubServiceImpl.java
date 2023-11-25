@@ -8,7 +8,6 @@ import com.rungroop.web.repository.UserRepository;
 import com.rungroop.web.security.SecurityUtil;
 import com.rungroop.web.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

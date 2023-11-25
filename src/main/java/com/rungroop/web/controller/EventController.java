@@ -1,6 +1,5 @@
 package com.rungroop.web.controller;
 
-import com.rungroop.web.dto.ClubDto;
 import com.rungroop.web.dto.EventDto;
 import com.rungroop.web.models.Event;
 import com.rungroop.web.models.UserEntity;
@@ -38,7 +37,7 @@ public class EventController {
         UserEntity user = new UserEntity();
         List<EventDto> events = eventService.findAllEvents();
         String username = SecurityUtil.getSessionUser();
-        if(username != null) {
+        if (username != null) {
             user = userService.findByUsername(username);
             model.addAttribute("user", user);
         }
@@ -48,11 +47,11 @@ public class EventController {
     }
 
     @GetMapping("/events/{eventId}")
-    public String viewEvent(@PathVariable("eventId")Long eventId, Model model) {
+    public String viewEvent(@PathVariable("eventId") Long eventId, Model model) {
         UserEntity user = new UserEntity();
         EventDto eventDto = eventService.findByEventId(eventId);
         String username = SecurityUtil.getSessionUser();
-        if(username != null) {
+        if (username != null) {
             user = userService.findByUsername(username);
             model.addAttribute("user", user);
         }
@@ -81,7 +80,7 @@ public class EventController {
     public String createEvent(@PathVariable("clubId") Long clubId, @ModelAttribute("event") EventDto eventDto,
                               BindingResult result,
                               Model model) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             model.addAttribute("event", eventDto);
             return "clubs-create";
         }
@@ -91,9 +90,9 @@ public class EventController {
 
     @PostMapping("/events/{eventId}/edit")
     public String updateEvent(@PathVariable("eventId") Long eventId,
-                             @Valid @ModelAttribute("event") EventDto event,
-                             BindingResult result, Model model) {
-        if(result.hasErrors()) {
+                              @Valid @ModelAttribute("event") EventDto event,
+                              BindingResult result, Model model) {
+        if (result.hasErrors()) {
             model.addAttribute("event", event);
             return "events-edit";
         }

@@ -18,7 +18,7 @@ public class ClubMapper {
                 .createdOn(club.getCreatedOn())
                 .updatedOn(club.getUpdatedOn())
                 .build();
-        return  clubDto;
+        return clubDto;
     }
 
     public static ClubDto mapToClubDto(Club club) {

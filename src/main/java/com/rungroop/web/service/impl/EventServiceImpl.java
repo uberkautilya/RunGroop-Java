@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.rungroop.web.mapper.ClubMapper.mapToClub;
 import static com.rungroop.web.mapper.EventMapper.mapToEvent;
 import static com.rungroop.web.mapper.EventMapper.mapToEventDto;
 
