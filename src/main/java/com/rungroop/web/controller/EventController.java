@@ -4,7 +4,6 @@ import com.rungroop.web.dto.EventDto;
 import com.rungroop.web.models.Event;
 import com.rungroop.web.models.UserEntity;
 import com.rungroop.web.security.SecurityUtil;
-import com.rungroop.web.service.ClubService;
 import com.rungroop.web.service.EventService;
 import com.rungroop.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ public class EventController {
 
     private EventService eventService;
     private UserService userService;
-    private ClubService clubService;
 
     @Autowired
     public EventController(EventService eventService, UserService userService) {
@@ -78,8 +76,8 @@ public class EventController {
 
     @PostMapping("/events/{clubId}")
     public String createEvent(@PathVariable("clubId") Long clubId, @ModelAttribute("event") EventDto eventDto,
-                              BindingResult result,
-                              Model model) {
+            BindingResult result,
+            Model model) {
         if (result.hasErrors()) {
             model.addAttribute("event", eventDto);
             return "clubs-create";
@@ -90,8 +88,8 @@ public class EventController {
 
     @PostMapping("/events/{eventId}/edit")
     public String updateEvent(@PathVariable("eventId") Long eventId,
-                              @Valid @ModelAttribute("event") EventDto event,
-                              BindingResult result, Model model) {
+            @Valid @ModelAttribute("event") EventDto event,
+            BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("event", event);
             return "events-edit";
